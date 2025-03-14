@@ -49,7 +49,7 @@ export default function AboutUs() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-4 md:px-0">
             <div className="text-left">
               <h4 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">OUR PROJECTS</h4>
-              <p className="text-gray-600 text-sm md:text-base mb-6">Discover our initiatives and their impact. We're committed to creating lasting change through various community-focused projects that address education, health, and social development.</p>
+              <p className="text-gray-600 text-sm md:text-base mb-6">Discover our initiatives and their impact. We&apos;re committed to creating lasting change through various community-focused projects that address education, health, and social development.</p>
               <button className="cta border-none bg-transparent cursor-pointer">
                 <a href="/projects" className="no-underline">
                   <span className="hover-underline-animation inline-block pb-7 tracking-[4px] text-sm pr-4 uppercase text-blue-600">

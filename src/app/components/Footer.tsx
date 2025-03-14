@@ -17,7 +17,7 @@ export default function Footer() {
               className="mb-4"
             />
             <blockquote className="text-gray-800 italic mb-4">
-              "Not all of us can do great things. But we can do small things with great love."
+              &quot;Not all of us can do great things. But we can do small things with great love.&quot;
             </blockquote>
             <cite className="text-gray-600 font-medium">- Mother Teresa</cite>
           </div>
@@ -31,7 +31,7 @@ export default function Footer() {
               className="mb-4"
             />
             <blockquote className="text-gray-800 italic mb-4">
-              "To succeed in your mission, you must have single-minded devotion to your goal."
+              &quot;To succeed in your mission, you must have single-minded devotion to your goal.&quot;
             </blockquote>
             <cite className="text-gray-600 font-medium">- APJ Abdul Kalam</cite>
           </div>

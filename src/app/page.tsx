@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
+import StatCard from './components/StatCard';
 import Image from 'next/image';
 import './fonts.css';
 import Header from './components/Header';
@@ -15,7 +16,7 @@ type Slide = {
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [scrolled, setScrolled] = useState(false);
+
   const [slides, setSlides] = useState<Slide[]>([
     {
       image: '/images/hero/banner.jpg',
@@ -30,10 +31,10 @@ export default function Home() {
         const response = await fetch('/data/hero-content.csv');
         const csvText = await response.text();
         const lines = csvText.split('\n').filter(line => line.trim());
-        const [headers, ...rows] = lines;
+        const rows = lines.slice(1);
         
         const heroSlides = rows.map(row => {
-          let fields = [];
+          const fields = [];
           let currentField = '';
           let inQuotes = false;
           
@@ -75,14 +76,6 @@ export default function Home() {
     return () => clearInterval(timer);
   }, [slides.length]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <main className="min-h-screen pt-16 px-5 bg-gray-50">
       <Header />
@@ -118,7 +111,7 @@ export default function Home() {
         <div className="w-full">
           <div className="text-center mb-12">
             <h4 className="text-2xl md:text-3xl font-bold text-gray-800">OUR IMPACT</h4>
-            <p className="mt-2 text-gray-600 text-sm md:text-base">The difference we've made together</p>
+            <p className="mt-2 text-gray-600 text-sm md:text-base">The difference we&apos;ve made together</p>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-0">
@@ -126,56 +119,9 @@ export default function Home() {
               { icon: '/icons/helped.gif', number: 1000, label: 'Lives Impacted', description: 'Through various community initiatives', suffix: '+' },
               { icon: '/icons/fundsr.gif', number: 50000, label: 'Funds Raised', description: 'For community development', suffix: '+' },
               { icon: '/icons/projects.gif', number: 10, label: 'Ongoing Projects', description: 'Active community initiatives', suffix: '+' }
-            ].map((stat, index) => {
-              const [count, setCount] = useState(0);
-              const countRef = useRef(null);
-              
-              useEffect(() => {
-                const observer = new IntersectionObserver(
-                  ([entry]) => {
-                    if (entry.isIntersecting) {
-                      let start = 0;
-                      const end = stat.number;
-                      const duration = 500;
-                      const startTime = performance.now();
-
-                      const animate = (currentTime: number) => {
-                        const elapsed = currentTime - startTime;
-                        const progress = Math.min(elapsed / duration, 1);
-                        
-                        const currentCount = Math.floor(progress * end);
-                        setCount(currentCount);
-
-                        if (progress < 1) {
-                          requestAnimationFrame(animate);
-                        }
-                      };
-
-                      requestAnimationFrame(animate);
-                      observer.disconnect();
-                    }
-                  },
-                  { threshold: 0.5 }
-                );
-
-                if (countRef.current) {
-                  observer.observe(countRef.current);
-                }
-
-                return () => observer.disconnect();
-              }, [stat.number]);
-
-              return (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center" ref={countRef}>
-                  <div className="flex justify-center mb-4">
-                    <Image src={stat.icon} alt={stat.label} width={64} height={64} className="w-16 h-16" unoptimized />
-                  </div>
-                  <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">{count}{stat.suffix}</div>
-                  <div className="text-lg font-semibold text-gray-800 mb-1">{stat.label}</div>
-                  <p className="text-sm text-gray-600">{stat.description}</p>
-                </div>
-              );
-            })}
+            ].map((stat, index) => (
+              <StatCard key={index} stat={stat} />
+            ))}
           </div>
         </div>
       </div>
@@ -196,7 +142,7 @@ export default function Home() {
             },
             {
               image: '/images/donate.png',
-              text: 'Your support is more than a donation it\'s a powerful act of hope. Donate now and create a ripple effect of change',
+              text: 'Your support is more than a donation it&apos;s a powerful act of hope. Donate now and create a ripple effect of change',
               button: 'Donate Now',
               link: '../charity page/index.html'
             },

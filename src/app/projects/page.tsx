@@ -23,10 +23,10 @@ export default function Projects() {
         const response = await fetch('/data/projects-content.csv');
         const csvText = await response.text();
         const lines = csvText.split('\n').filter(line => line.trim());
-        const [headers, ...rows] = lines;
+        const rows = lines.slice(1);
         
         const projectData = rows.map(row => {
-          let fields = [];
+          const fields = [];
           let currentField = '';
           let inQuotes = false;
           
