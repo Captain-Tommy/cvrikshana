@@ -107,8 +107,8 @@ export default function Home() {
       </div>
 
 
-      <div className="container mx-auto mt-16 relative h-[450px] sm:h-[550px] md:h-[650px] lg:h-[750px] flex items-center">
-        <div className="w-full">
+      <div className="w-full mt-16 relative flex items-center">
+        <div className="container mx-auto py-16 px-4 md:px-6">
           <div className="text-center mb-12">
             <h4 className="text-2xl md:text-3xl font-bold text-gray-800">OUR IMPACT</h4>
             <p className="mt-2 text-gray-600 text-sm md:text-base">The difference we&apos;ve made together</p>
@@ -132,23 +132,45 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="container mx-auto mt-16 relative flex items-center">
-        <div className="w-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-0">
-            <div className="bg-white rounded-lg shadow-sm border p-8 hover:shadow-md transition-shadow">
-              <h4 className="text-2xl font-bold text-gray-800 mb-4">Our Vision</h4>
-              <p className="text-gray-700 text-lg">To create a world where compassion drives change, where every individual has the opportunity to thrive, and where community service becomes a way of life.</p>
+      <div className="w-full mt-16 relative flex items-center bg-white rounded-lg shadow-sm min-h-[400px] md:min-h-[500px] lg:min-h-[650px]">
+        <div className="container mx-auto py-8 md:py-12 lg:py-16 space-y-4 md:space-y-6 lg:space-y-8 px-4 md:px-6">
+          <div className="flex flex-col md:flex-row justify-start px-4 md:px-0">
+            <div className="rounded-lg flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 max-w-2xl">
+              <div className="w-16 h-16 md:w-24 md:h-24 relative flex-shrink-0">
+                <Image
+                  src="/icons/vision.gif"
+                  alt="Vision Icon"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="text-center md:text-left">
+                <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 md:mb-4">Our Vision</h4>
+                <p className="text-base md:text-lg text-gray-700">To create a world where compassion drives change, where every individual has the opportunity to thrive, and where community service becomes a way of life.</p>
+              </div>
             </div>
-            <div className="bg-white rounded-lg shadow-sm border p-8 hover:shadow-md transition-shadow">
-              <h4 className="text-2xl font-bold text-gray-800 mb-4">Our Mission</h4>
-              <p className="text-gray-700 text-lg">To empower communities through sustainable initiatives, foster social responsibility, and create lasting positive impact through collaborative efforts and innovative solutions.</p>
+          </div>
+          <div className="flex flex-col md:flex-row justify-end px-4 md:px-0">
+            <div className="rounded-lg flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 max-w-2xl">
+              <div className="w-16 h-16 md:w-24 md:h-24 relative flex-shrink-0">
+                <Image
+                  src="/icons/mission.gif"
+                  alt="Mission Icon"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="text-center md:text-left">
+                <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 md:mb-4">Our Mission</h4>
+                <p className="text-base md:text-lg text-gray-700">To empower communities through sustainable initiatives, foster social responsibility, and create lasting positive impact through collaborative efforts and innovative solutions.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto mt-16 relative h-[450px] sm:h-[550px] md:h-[650px] lg:h-[750px] flex items-center">
-        <div className="w-full">
+      <div className="w-full mt-16 relative flex items-center">
+        <div className="container mx-auto py-16 px-4 md:px-6">
           <div className="text-center mb-12">
             <h4 className="text-2xl md:text-3xl font-bold text-gray-800">GET INVOLVED</h4>
             <p className="mt-2 text-gray-600 text-sm md:text-base">Join us in our mission to make a difference in the world.</p>
