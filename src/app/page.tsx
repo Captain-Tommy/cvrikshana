@@ -125,15 +125,15 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-12 text-center">
-            <div className="bg-white rounded-lg shadow-sm border p-8 hover:shadow-md transition-shadow max-w-3xl mx-auto">
-              <p className="text-2xl text-gray-900">We believe in fostering humanity through compassionate actions, social service, and collective empowerment.</p>
-            </div>
+            <p className="text-2xl text-gray-900 max-w-none mx-auto font-[CinzelDecorative] font-black before:content-['|'] before:mr-4 before:text-blue-600">
+              We believe in fostering humanity through compassionate actions, social service, and collective empowerment.
+            </p>
           </div>
         </div>
       </div>
 
       <div className="w-full mt-16 relative flex items-center bg-white rounded-lg shadow-sm min-h-[400px] md:min-h-[500px] lg:min-h-[650px]">
-        <div className="container mx-auto py-8 md:py-12 lg:py-16 space-y-4 md:space-y-6 lg:space-y-8 px-4 md:px-6">
+        <div className="container mx-auto py-8 md:py-12 lg:py-16 space-y-8 md:space-y-12 lg:space-y-16 px-4 md:px-6">
           <div className="flex flex-col md:flex-row justify-start px-4 md:px-0">
             <div className="rounded-lg flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 max-w-2xl">
               <div className="w-16 h-16 md:w-24 md:h-24 relative flex-shrink-0">
@@ -152,17 +152,17 @@ export default function Home() {
           </div>
           <div className="flex flex-col md:flex-row justify-end px-4 md:px-0">
             <div className="rounded-lg flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 max-w-2xl">
-              <div className="w-16 h-16 md:w-24 md:h-24 relative flex-shrink-0">
+              <div className="text-center md:text-right order-1 md:order-1">
+                <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 md:mb-4">Our Mission</h4>
+                <p className="text-base md:text-lg text-gray-700">To empower communities through sustainable initiatives, foster social responsibility, and create lasting positive impact through collaborative efforts and innovative solutions.</p>
+              </div>
+              <div className="w-16 h-16 md:w-24 md:h-24 relative flex-shrink-0 order-2 md:order-2">
                 <Image
                   src="/icons/mission.gif"
                   alt="Mission Icon"
                   fill
                   className="object-contain"
                 />
-              </div>
-              <div className="text-center md:text-left">
-                <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 md:mb-4">Our Mission</h4>
-                <p className="text-base md:text-lg text-gray-700">To empower communities through sustainable initiatives, foster social responsibility, and create lasting positive impact through collaborative efforts and innovative solutions.</p>
               </div>
             </div>
           </div>
