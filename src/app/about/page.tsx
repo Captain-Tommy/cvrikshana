@@ -82,6 +82,23 @@ export default function AboutUs() {
               <p className="text-gray-600 text-center">Addressing fundamental needs through food security programs while fostering educational initiatives that empower individuals to build better futures.</p>
             </div>
           </div>
+
+          <div className="mt-12 text-center">
+            <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">Sustainable Development Goals</h4>
+            <p className="text-gray-600 mb-6">We are committed to the UN's Sustainable Development Goals</p>
+            <div className="flex justify-between items-center max-w-7xl mx-auto overflow-x-auto py-4">
+              {[1, 2, 3, 4, 5, 10, 15, 16, 17].map((num) => (
+                <div key={num} className="relative w-20 h-20 md:w-28 md:h-28 hover:scale-105 transition-transform duration-300 flex-shrink-0 mx-2">
+                  <Image
+                    src={`/icons/SDGs/E_GIF_${num.toString().padStart(2, '0')}.gif`}
+                    alt={`SDG ${num}`}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -151,6 +168,8 @@ export default function AboutUs() {
             </div>
           </div>
         </div>
+
+
       </div>
 
       <div className="container mx-auto min-h-[calc(100vh-4rem)] flex flex-col justify-center mb-16">
