@@ -15,28 +15,29 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <main className="min-h-screen pt-16 px-5 bg-gray-50">
+    <main className="min-h-screen pt-16 px-4 sm:px-5 bg-gray-50">
       <Header />
       <DonateButton />
       <div className="container mx-auto min-h-[calc(100vh-4rem)] flex flex-col justify-center">
-        <div className="bg-transparent py-16">
-          <div className="text-center mb-12">
-            <h4 className="text-2xl md:text-3xl font-bold text-gray-800">ABOUT US</h4>
-            <p className="mt-2 text-gray-600 text-sm md:text-base">Learn more about our mission and impact</p>
+        <div className="bg-transparent py-8 sm:py-12 md:py-16">
+          <div className="text-center mb-8 sm:mb-12">
+            <h4 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800">ABOUT US</h4>
+            <p className="mt-2 text-gray-600 text-xs sm:text-sm md:text-base">Learn more about our mission and impact</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-center px-4 md:px-0">
-            <div className="relative h-[250px] sm:h-[300px] md:h-[400px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-center px-0">
+            <div className="relative h-[200px] xs:h-[250px] sm:h-[300px] md:h-[400px] w-full">
               <video
                 src="/images/tro.mp4"
                 className="w-full h-full object-cover rounded-lg"
                 autoPlay
                 loop
                 muted
+                playsInline
               />
             </div>
-            <div className="relative z-10 bg-white/90 p-4 md:p-8 rounded-lg shadow-sm">
-              <p className="text-justify text-gray-800 text-base md:text-lg leading-relaxed">
+            <div className="relative z-10 bg-white/90 p-4 sm:p-6 md:p-8 rounded-lg shadow-sm">
+              <p className="text-justify text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed">
                 Ikshana Club is dedicated to creating a positive impact through social outreach and community empowerment. We bring together compassionate individuals committed to uplifting lives, whether through educational support, wellness initiatives, or acts of kindness. United by purpose, we believe in the power of small actions to create lasting change and inspire hope in every community we serve.
               </p>
             </div>
@@ -51,10 +52,10 @@ export default function AboutUs() {
             <p className="mt-2 text-gray-600 text-sm md:text-base">Our key focus areas for community development</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-0">
-            <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6">
-              <div className="flex items-center justify-center mb-4">
-                <div className="w-16 h-16 text-blue-600">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 px-0">
+            <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-4 sm:p-6">
+              <div className="flex items-center justify-center mb-3 sm:mb-4">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 text-blue-600">
                   <Image
                     src="/icons/si.gif"
                     alt="Social Impact Icon"
@@ -86,9 +87,9 @@ export default function AboutUs() {
           <div className="mt-12 text-center">
             <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">Sustainable Development Goals</h4>
             <p className="text-gray-600 mb-6">We are committed to the UN&apos;s Sustainable Development Goals</p>
-            <div className="flex justify-between items-center max-w-7xl mx-auto overflow-x-auto py-4">
+            <div className="flex justify-start sm:justify-between items-center max-w-7xl mx-auto overflow-x-auto py-4 gap-2 sm:gap-4">
               {[1, 2, 3, 4, 5, 10, 15, 16, 17].map((num) => (
-                <div key={num} className="relative w-20 h-20 md:w-28 md:h-28 hover:scale-105 transition-transform duration-300 flex-shrink-0 mx-2">
+                <div key={num} className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 hover:scale-105 transition-transform duration-300 flex-shrink-0">
                   <Image
                     src={`/icons/SDGs/E_GIF_${num.toString().padStart(2, '0')}.gif`}
                     alt={`SDG ${num}`}
@@ -179,7 +180,7 @@ export default function AboutUs() {
             <p className="mt-2 text-gray-600 text-sm md:text-base">Meet the dedicated individuals behind our mission</p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 md:px-0">
+          <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 px-0">
             {coreTeam.map((member, index) => (
               <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
                 <div className="aspect-square relative">
@@ -188,11 +189,12 @@ export default function AboutUs() {
                     alt={member.name}
                     fill
                     className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   />
                 </div>
-                <div className="p-4 text-center">
-                  <h5 className="font-semibold text-gray-900 mb-1">{member.name}</h5>
-                  <p className="text-sm text-gray-600">{member.designation}</p>
+                <div className="p-3 sm:p-4 text-center">
+                  <h5 className="font-semibold text-gray-900 mb-1 text-sm sm:text-base">{member.name}</h5>
+                  <p className="text-xs sm:text-sm text-gray-600">{member.designation}</p>
                 </div>
               </div>
             ))}

@@ -77,7 +77,7 @@ export default function Home() {
   }, [slides.length]);
 
   return (
-    <main className="min-h-screen pt-16 px-5 bg-gray-50">
+    <main className="min-h-screen pt-16 px-4 sm:px-5 bg-gray-50">
       <Header />
       <DonateButton />
 
