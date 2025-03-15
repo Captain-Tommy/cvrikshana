@@ -46,6 +46,47 @@ export default function AboutUs() {
 
       <div className="container mx-auto min-h-[calc(100vh-4rem)] flex flex-col justify-center">
         <div className="bg-transparent py-16">
+          <div className="text-center mb-12">
+            <h4 className="text-2xl md:text-3xl font-bold text-gray-800">OUR VERTICALS</h4>
+            <p className="mt-2 text-gray-600 text-sm md:text-base">Our key focus areas for community development</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-0">
+            <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6">
+              <div className="flex items-center justify-center mb-4">
+                <div className="w-16 h-16 text-blue-600">
+                  <Image
+                    src="/icons/si.gif"
+                    alt="Social Impact Icon"
+                    width={64}
+                    height={64}
+                  />
+                </div>
+              </div>
+              <h5 className="text-xl font-semibold text-gray-900 mb-3 text-center">Social Impact</h5>
+              <p className="text-gray-600 text-center">Empowering grassroots initiatives and fostering local leadership to build resilient communities, while promoting sustainable practices and inclusive growth at every level.</p>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6">
+              <div className="flex items-center justify-center mb-4">
+                <div className="w-16 h-16 text-blue-600">
+                  <Image
+                    src="/icons/fe.gif"
+                    alt="Food & Education Icon"
+                    width={64}
+                    height={64}
+                  />
+                </div>
+              </div>
+              <h5 className="text-xl font-semibold text-gray-900 mb-3 text-center">Food & Education</h5>
+              <p className="text-gray-600 text-center">Addressing fundamental needs through food security programs while fostering educational initiatives that empower individuals to build better futures.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto min-h-[calc(100vh-4rem)] flex flex-col justify-center">
+        <div className="bg-transparent py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-4 md:px-0">
             <div className="text-left">
               <h4 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">OUR PROJECTS</h4>

@@ -112,7 +112,6 @@ export default function Home() {
           <div className="text-center mb-12">
             <h4 className="text-2xl md:text-3xl font-bold text-gray-800">OUR IMPACT</h4>
             <p className="mt-2 text-gray-600 text-sm md:text-base">The difference we&apos;ve made together</p>
-            <p className="mt-4 text-gray-700 text-base md:text-lg max-w-3xl mx-auto">We believe in fostering humanity through compassionate actions, social service, and collective empowerment.</p>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-0">
