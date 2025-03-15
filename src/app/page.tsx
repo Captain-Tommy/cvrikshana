@@ -131,8 +131,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full mt-16 relative flex items-center bg-white rounded-lg shadow-sm min-h-[400px] md:min-h-[500px] lg:min-h-[650px]">
-        <div className="container mx-auto py-8 md:py-12 lg:py-16 space-y-8 md:space-y-12 lg:space-y-16 px-4 md:px-6">
+      <div className="w-full mt-16 relative flex items-center bg-white rounded-lg shadow-sm min-h-[200px] md:min-h-[250px] lg:min-h-[300px]">
+        <div className="container mx-auto py-6 md:py-8 lg:py-12 space-y-6 md:space-y-8 lg:space-y-12 px-4 md:px-6">
           <div className="flex flex-col md:flex-row justify-start px-4 md:px-0">
             <div className="rounded-lg flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 max-w-2xl">
               <div className="w-16 h-16 md:w-24 md:h-24 relative flex-shrink-0">
@@ -165,7 +165,13 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="mt-12 text-center">
+
+        </div>
+      </div>
+
+      <div className="w-full mt-16 relative flex items-center bg-white rounded-lg shadow-sm">
+        <div className="container mx-auto py-8 md:py-12 lg:py-16 px-4 md:px-6">
+          <div className="text-center">
             <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">Sustainable Development Goals</h4>
             <p className="text-gray-600 mb-6">Our work naturally aligns with these global objectives for a better world</p>
             <div className="flex justify-between items-center max-w-7xl mx-auto overflow-x-auto py-4">
