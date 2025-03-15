@@ -112,6 +112,7 @@ export default function Home() {
           <div className="text-center mb-12">
             <h4 className="text-2xl md:text-3xl font-bold text-gray-800">OUR IMPACT</h4>
             <p className="mt-2 text-gray-600 text-sm md:text-base">The difference we&apos;ve made together</p>
+            <p className="mt-4 text-gray-700 text-base md:text-lg max-w-3xl mx-auto">We believe in fostering humanity through compassionate actions, social service, and collective empowerment.</p>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-0">
@@ -122,6 +123,26 @@ export default function Home() {
             ].map((stat, index) => (
               <StatCard key={index} stat={stat} />
             ))}
+          </div>
+          <div className="mt-12 text-center">
+            <div className="bg-white rounded-lg shadow-sm border p-8 hover:shadow-md transition-shadow max-w-3xl mx-auto">
+              <p className="text-2xl text-gray-900">We believe in fostering humanity through compassionate actions, social service, and collective empowerment.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto mt-16 relative flex items-center">
+        <div className="w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-0">
+            <div className="bg-white rounded-lg shadow-sm border p-8 hover:shadow-md transition-shadow">
+              <h4 className="text-2xl font-bold text-gray-800 mb-4">Our Vision</h4>
+              <p className="text-gray-700 text-lg">To create a world where compassion drives change, where every individual has the opportunity to thrive, and where community service becomes a way of life.</p>
+            </div>
+            <div className="bg-white rounded-lg shadow-sm border p-8 hover:shadow-md transition-shadow">
+              <h4 className="text-2xl font-bold text-gray-800 mb-4">Our Mission</h4>
+              <p className="text-gray-700 text-lg">To empower communities through sustainable initiatives, foster social responsibility, and create lasting positive impact through collaborative efforts and innovative solutions.</p>
+            </div>
           </div>
         </div>
       </div>
