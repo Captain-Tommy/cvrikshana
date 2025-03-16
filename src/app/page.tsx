@@ -17,6 +17,8 @@ type Slide = {
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  const [ctas, setCtas] = useState<{enable: string; content: string; buttontext: string; link: string; imagepath: string; venue: string; date: string; time: string; registration_deadline: string; registration_fee: string; rewards: string}[]>([]);
+
   const [slides, setSlides] = useState<Slide[]>([
     {
       image: '/images/hero/banner.jpg',
@@ -24,6 +26,50 @@ export default function Home() {
       description: 'Join us in making a difference in our community'
     }
   ]);
+
+  useEffect(() => {
+    async function loadCtaContent() {
+      try {
+        const response = await fetch('/data/cta.csv');
+        const csvText = await response.text();
+        const lines = csvText.split('\n').filter(line => line.trim());
+        const rows = lines.slice(1);
+        
+        const ctaData = rows.map(row => {
+          const fields = [];
+          let currentField = '';
+          let inQuotes = false;
+          
+          for (let i = 0; i < row.length; i++) {
+            const char = row[i];
+            if (char === '"') {
+              inQuotes = !inQuotes;
+            } else if (char === ',' && !inQuotes) {
+              fields.push(currentField.trim());
+              currentField = '';
+            } else {
+              currentField += char;
+            }
+          }
+          fields.push(currentField.trim());
+          
+          const [enable, content, buttontext, link, imagepath, venue, date, time, registration_deadline, registration_fee, rewards] = fields.map(field =>
+            field.startsWith('"') && field.endsWith('"') ? field.slice(1, -1) : field
+          );
+          
+          return { enable, content, buttontext, link, imagepath, venue, date, time, registration_deadline, registration_fee, rewards };
+        });
+
+        if (ctaData.length > 0) {
+          setCtas(ctaData);
+        }
+      } catch (error) {
+        console.error('Error loading CTA content:', error);
+      }
+    }
+
+    loadCtaContent();
+  }, []);
 
   useEffect(() => {
     async function loadHeroContent() {
@@ -106,6 +152,81 @@ export default function Home() {
         ))}
       </div>
 
+       {ctas.map((cta, index) => cta.enable === 'yes' && (
+        <div key={index} className="relative w-full overflow-hidden rounded-lg mt-4">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between bg-white rounded-lg shadow-sm p-4 sm:p-6 md:p-8">
+            <div className="w-full lg:w-1/2 lg:pr-8 mb-6 lg:mb-0">
+              <div className="inline-block bg-green-100 text-green-800 px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">Registrations Open</div>
+              <div className="block lg:hidden w-full h-[300px] relative mb-4">
+                <Image
+                  src={cta.imagepath}
+                  alt="CTA Image"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-800 mb-4 sm:mb-6 leading-relaxed">{cta.content}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8 text-gray-700 text-sm sm:text-base">
+                <div className="flex items-start gap-2">
+                  <Image src="/icons/venue.gif" alt="Venue" width={24} height={24} className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <div>
+                    <p className="font-semibold">Venue:</p>
+                    <p className="text-sm">{cta.venue}</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Image src="/icons/dt.gif" alt="Date & Time" width={24} height={24} className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <div>
+                    <p className="font-semibold">Date & Time:</p>
+                    <p className="text-sm">{cta.date} | {cta.time}</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Image src="/icons/fee.gif" alt="Registration Fee" width={24} height={24} className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <div>
+                    <p className="font-semibold">Registration Fee:</p>
+                    <p className="text-sm">{cta.registration_fee}</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Image src="/icons/deadline.gif" alt="Registration Deadline" width={24} height={24} className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <div>
+                    <p className="font-semibold">Registration Deadline:</p>
+                    <p className="text-sm">{cta.registration_deadline}</p>
+                  </div>
+                </div>
+                <div className="sm:col-span-2 flex items-start gap-2">
+                  <Image src="/icons/reward.gif" alt="Rewards" width={24} height={24} className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <div>
+                    <p className="font-semibold">Rewards:</p>
+                    <p className="text-sm">{cta.rewards}</p>
+                  </div>
+                </div>
+              </div>
+              <a
+                href={cta.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-white hover:text-black border border-black transition-all duration-200 text-base sm:text-xl font-semibold"
+              >
+                {cta.buttontext}
+              </a>
+            </div>
+            <div className="w-full lg:w-1/2 flex flex-col justify-center">
+              <div className="hidden lg:block w-full aspect-video relative mb-6">
+                <Image
+                  src={cta.imagepath}
+                  alt="CTA Image"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
 
       <div className="w-full mt-16 relative flex items-center">
         <div className="container mx-auto py-16 px-4 md:px-6">
@@ -124,9 +245,10 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-12 text-center">
-            <p className="text-2xl text-gray-900 max-w-none mx-auto font-[CinzelDecorative] font-black before:content-['|'] before:mr-4 before:text-blue-600">
-              We believe in fostering humanity through compassionate actions, social service, and collective empowerment.
-            </p>
+            <p className="text-gray-600 mb-6">Want to contribute to our projects?</p>
+          </div>
+          <div className="text-2xl text-gray-900 max-w-none mx-auto font-[CinzelDecorative] font-black before:content-['|'] before:mr-4 before:text-blue-600">
+            We believe in fostering humanity through compassionate actions, social service, and collective empowerment.
           </div>
         </div>
       </div>
@@ -178,7 +300,7 @@ export default function Home() {
               {[1, 2, 3, 4, 5, 10, 15, 16, 17].map((num) => (
                 <div key={num} className="relative w-20 h-20 md:w-28 md:h-28 hover:scale-105 transition-transform duration-300 flex-shrink-0 mx-2">
                   <Image
-                    src={`/icons/SDGs/E_GIF_${num.toString().padStart(2, '0')}.gif`}
+                    src={`/icons/SDG Icons/E-WEB-Goal-${num.toString().padStart(2, '0')}.png`}
                     alt={`SDG ${num}`}
                     fill
                     className="object-contain"
@@ -189,6 +311,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+
 
       <div className="w-full mt-16 relative flex items-center">
         <div className="container mx-auto py-16 px-4 md:px-6">
