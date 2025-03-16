@@ -323,41 +323,57 @@ export default function Home() {
             <p className="mt-2 text-gray-600 text-sm md:text-base">Join us in our mission to make a difference in the world.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 px-4 md:px-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-4 md:px-0">
             {[{
-              image: '/images/people.png',
-              text: 'Transform compassion into action uplift lives and inspire change with us!',
+              icon: '/icons/volunteer.gif',
+              title: 'Volunteer With Us',
+              text: 'Join our community of changemakers and help create lasting impact through meaningful volunteer opportunities.',
               button: 'Join Now',
-              link: '#con'
+              link: '/form'
             },
             {
-              image: '/images/donate.png',
-              text: 'Your support is more than a donation it&apos;s a powerful act of hope. Donate now and create a ripple effect of change',
+              icon: '/icons/donate.gif',
+              title: 'Make a Donation',
+              text: 'Support our initiatives with a donation. Every contribution, big or small, helps us create positive change in our community.',
               button: 'Donate Now',
-              link: '../charity page/index.html'
+              link: '/donate'
             },
             {
-              image: '/images/partner.png',
-              text: 'Explore the journey of compassion uncover our mission, impact, and stories of lives transformed',
-              button: 'Learn more',
-              link: '../explore/explore.html'
+              icon: '/icons/collab.gif',
+              title: 'Partner With Us',
+              text: 'Collaborate with us to amplify our impact. Together, we can create sustainable solutions for community development.',
+              button: 'Learn More',
+              link: '/about'
             }].map((card, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-sm border overflow-hidden hover:shadow-md transition-shadow">
-                <div className="relative h-48">
-                  <Image
-                    src={card.image}
-                    alt="Card image"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <div className="p-6 text-center">
-                  <p className="mb-4 text-gray-700">{card.text}</p>
+              <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="p-8 flex flex-col items-center">
+                  <div className="w-20 h-20 relative mb-6">
+                    <Image
+                      src={card.icon}
+                      alt={card.title}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{card.title}</h3>
+                  <p className="text-gray-600 text-center mb-6 leading-relaxed">{card.text}</p>
                   <a
                     href={card.link}
-                    className="inline-block bg-blue-700 text-white px-6 py-2 rounded hover:bg-white hover:text-blue-700 border-2 border-blue-700 transition-colors"
+                    className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-all duration-300 group"
                   >
-                    {card.button}
+                    <span>{card.button}</span>
+                    <svg
+                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
                   </a>
                 </div>
               </div>

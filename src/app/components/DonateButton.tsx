@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function DonateButton() {
+  const router = useRouter();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
@@ -40,12 +42,15 @@ export default function DonateButton() {
               >
                 Close
               </button>
-              <a
-                href="../charity page/index.html"
+              <button
+                onClick={() => {
+                  setIsDialogOpen(false);
+                  router.push('/donate');
+                }}
                 className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors"
               >
                 Proceed to Donate
-              </a>
+              </button>
             </div>
           </div>
         </div>
