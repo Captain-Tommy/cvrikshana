@@ -244,7 +244,7 @@ export default function Home() {
               <StatCard key={index} stat={stat} />
             ))}
           </div>
-          <div className="text-2xl text-gray-900 max-w-none mx-auto font-[CinzelDecorative] font-black before:content-['|'] before:mr-4 before:text-blue-600">
+          <div className="text-2xl text-gray-900 max-w-none mx-auto font-[CinzelDecorative] font-black before:content-['|'] before:mr-4 before:text-blue-600 mt-12">
             We believe in fostering humanity through compassionate actions, social service, and collective empowerment.
           </div>
         </div>
@@ -294,13 +294,19 @@ export default function Home() {
             <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">Sustainable Development Goals</h4>
             <p className="text-gray-600 mb-6">Our work naturally aligns with these global objectives for a better world</p>
             <div className="flex justify-between items-center max-w-7xl mx-auto overflow-x-auto py-4">
-              {[1, 2, 3, 4, 5, 10, 15, 16, 17].map((num) => (
-                <div key={num} className="relative w-20 h-20 md:w-28 md:h-28 hover:scale-105 transition-transform duration-300 flex-shrink-0 mx-2">
+              {[1, 2, 3, 4, 5, 10, 13, 15, 17].map((num) => (
+                <div key={num} className="relative w-20 h-20 md:w-28 md:h-28 hover:scale-105 transition-transform duration-300 flex-shrink-0 mx-2 group">
+                  <Image
+                    src={`/icons/sdg inverted/SDG_Icons_Inverted_Transparent_WEB-${num.toString().padStart(2, '0')}.png`}
+                    alt={`SDG ${num}`}
+                    fill
+                    className="object-contain transition-opacity duration-300 group-hover:opacity-0"
+                  />
                   <Image
                     src={`/icons/SDG Icons/E-WEB-Goal-${num.toString().padStart(2, '0')}.png`}
                     alt={`SDG ${num}`}
                     fill
-                    className="object-contain"
+                    className="object-contain absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   />
                 </div>
               ))}
