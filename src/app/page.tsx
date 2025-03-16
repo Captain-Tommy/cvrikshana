@@ -244,9 +244,6 @@ export default function Home() {
               <StatCard key={index} stat={stat} />
             ))}
           </div>
-          <div className="mt-12 text-center">
-            <p className="text-gray-600 mb-6">Want to contribute to our projects?</p>
-          </div>
           <div className="text-2xl text-gray-900 max-w-none mx-auto font-[CinzelDecorative] font-black before:content-['|'] before:mr-4 before:text-blue-600">
             We believe in fostering humanity through compassionate actions, social service, and collective empowerment.
           </div>
