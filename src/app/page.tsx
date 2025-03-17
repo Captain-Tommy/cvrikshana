@@ -164,6 +164,7 @@ export default function Home() {
                   fill
                   className="object-contain"
                   priority
+                  unoptimized
                 />
               </div>
               <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-800 mb-4 sm:mb-6 leading-relaxed">{cta.content}</p>
