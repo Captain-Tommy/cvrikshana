@@ -26,11 +26,12 @@ export default function DonatePage() {
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <Header />
       
-      <div className="pt-20 sm:pt-24 md:pt-28 px-3 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <div className="pt-24 sm:pt-28 md:pt-32 lg:pt-36 px-3 sm:px-6 lg:px-8 animate-fadeIn">
+        <div className="max-w-7xl mx-auto space-y-12 sm:space-y-16 md:space-y-20">
           {/* Hero Section */}
-          <div className="text-center mb-12 sm:mb-16 md:mb-20">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 mb-4 sm:mb-6 md:mb-8 animate-fade-in tracking-tight">
+          <div className="text-center relative">
+            <div className="absolute inset-0 blur-3xl bg-gradient-to-r from-blue-100 to-blue-50 -z-10 rounded-full opacity-70"></div>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent mb-4 sm:mb-6 md:mb-8 tracking-tight animate-slideUp">
               Make a Difference Today
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-gray-900 max-w-2xl mx-auto leading-relaxed font-medium px-4">
@@ -39,7 +40,7 @@ export default function DonatePage() {
           </div>
 
           {/* Donation Section */}
-          <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-10 mb-12 sm:mb-16 transform hover:scale-[1.01] transition-all duration-300 border border-gray-100 mx-3 sm:mx-4 md:mx-0">
+          <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 transform hover:scale-[1.01] transition-all duration-300 border border-gray-100/50 mx-3 sm:mx-4 md:mx-0 animate-slideUp">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-8 sm:mb-10 text-center tracking-tight">Select Donation Amount</h2>
             
             {/* Donation Tiers */}
@@ -48,9 +49,9 @@ export default function DonatePage() {
                 <button
                   key={index}
                   onClick={() => setSelectedAmount(tier.amount)}
-                  className={`p-4 sm:p-6 md:p-8 rounded-2xl border-2 transition-all duration-300 transform hover:-translate-y-1 ${selectedAmount === tier.amount ? 'border-blue-600 bg-blue-50 shadow-lg ring-4 ring-blue-100' : 'border-gray-200 hover:border-blue-400 hover:shadow-lg'}`}
+                  className={`p-4 sm:p-6 md:p-8 rounded-2xl border-2 transition-all duration-300 transform hover:-translate-y-2 group ${selectedAmount === tier.amount ? 'border-blue-600 bg-gradient-to-br from-blue-50 to-blue-100/50 shadow-xl ring-4 ring-blue-100' : 'border-gray-200 hover:border-blue-400 hover:shadow-xl bg-white/80 hover:bg-white'}`}
                 >
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-700 mb-2 sm:mb-3 md:mb-4">₹{tier.amount}</div>
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent mb-2 sm:mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300">₹{tier.amount}</div>
                   <p className="text-sm sm:text-base text-gray-900 leading-relaxed font-medium">{tier.impact}</p>
                 </button>
               ))}
@@ -83,10 +84,11 @@ export default function DonatePage() {
             {/* Donate Button */}
             <button
               onClick={handleDonateClick}
-              className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 sm:px-12 py-4 sm:py-5 rounded-full hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-bold text-lg sm:text-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:hover:shadow-lg mx-auto block"
               disabled={!selectedAmount && !customAmount}
+              className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 sm:px-12 py-4 sm:py-5 rounded-full hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-bold text-lg sm:text-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:hover:shadow-lg mx-auto block relative overflow-hidden group"
             >
-              Proceed to Donate
+              <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
+              <span className="relative">Proceed to Donate</span>
             </button>
 
             {showPaymentMethod && (
