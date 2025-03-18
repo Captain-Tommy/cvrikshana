@@ -240,7 +240,7 @@ export default function Home() {
             {[
               { icon: '/icons/helped.gif', number: 1000, label: 'Lives Impacted', description: 'Through various community initiatives', suffix: '+' },
               { icon: '/icons/fundsr.gif', number: 50000, label: 'Funds Raised', description: 'For community development', suffix: '+' },
-              { icon: '/icons/projects.gif', number: 10, label: 'Ongoing Projects', description: 'Active community initiatives', suffix: '+' }
+              { icon: '/icons/projects.gif', number: 10, label: 'Projects Executed', description: 'Active community initiatives', suffix: '+' }
             ].map((stat, index) => (
               <StatCard key={index} stat={stat} />
             ))}
@@ -324,15 +324,8 @@ export default function Home() {
             <p className="mt-2 text-gray-600 text-sm md:text-base">Join us in our mission to make a difference in the world.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-4 md:px-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 px-4 md:px-0">
             {[{
-              icon: '/icons/volunteer.gif',
-              title: 'Volunteer With Us',
-              text: 'Join our community of changemakers and help create lasting impact through meaningful volunteer opportunities.',
-              button: 'Join Now',
-              link: '/form'
-            },
-            {
               icon: '/icons/donate.gif',
               title: 'Make a Donation',
               text: 'Support our initiatives with a donation. Every contribution, big or small, helps us create positive change in our community.',
@@ -343,8 +336,8 @@ export default function Home() {
               icon: '/icons/collab.gif',
               title: 'Partner With Us',
               text: 'Collaborate with us to amplify our impact. Together, we can create sustainable solutions for community development.',
-              button: 'Learn More',
-              link: '/about'
+              button: 'Email us',
+              link: 'mailto:ikshanaclub@gmail.com?subject=Partnering%20Request'
             }].map((card, index) => (
               <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="p-8 flex flex-col items-center">
