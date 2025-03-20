@@ -65,7 +65,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <main className="min-h-screen pt-16 px-4 sm:px-5 bg-gray-50">
+    <main className="min-h-screen pt-24 px-4 sm:px-5 bg-gray-50">
       <Header />
       <DonateButton />
       <div className="container mx-auto mt-8 sm:mt-12 md:mt-16">

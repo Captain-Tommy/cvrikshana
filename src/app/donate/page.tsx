@@ -26,7 +26,7 @@ export default function DonatePage() {
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <Header />
       
-      <div className="pt-24 sm:pt-28 md:pt-32 lg:pt-36 px-3 sm:px-6 lg:px-8 animate-fadeIn">
+      <div className="pt-32 sm:pt-36 md:pt-40 lg:pt-44 px-3 sm:px-6 lg:px-8 animate-fadeIn">
         <div className="max-w-7xl mx-auto space-y-12 sm:space-y-16 md:space-y-20">
           {/* Hero Section */}
           <div className="text-center relative">

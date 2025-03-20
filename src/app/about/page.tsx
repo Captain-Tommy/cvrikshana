@@ -1,17 +1,53 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import Header from '../components/Header';
 import DonateButton from '../components/DonateButton';
 import Footer from '../components/Footer';
 import { CoreTeamMember, loadCoreTeamData } from '@/utils/loadCsvData';
 
+type Founder = {
+  image: string;
+  name: string;
+  quote: string;
+};
+
+const loadFoundersData = async (): Promise<Founder[]> => {
+  const response = await fetch('/data/founders.csv');
+  const csvText = await response.text();
+  const [header, ...rows] = csvText.split('\n').filter(Boolean);
+  return rows.map(row => {
+    const matches = row.match(/(?:^|,)("[^"]*"|[^,]*)/g);
+    if (!matches) return { image: '', name: '', quote: '' };
+    const [image, name, quote] = matches.map(field => 
+      field.startsWith(',') ? field.slice(1) : field
+    ).map(field =>
+      field.startsWith('"') ? field.slice(1, -1) : field
+    );
+    return { image, name, quote };
+  });
+};
+
 export default function AboutUs() {
   const [coreTeam, setCoreTeam] = useState<CoreTeamMember[]>([]);
+  const [founders, setFounders] = useState<Founder[]>([]);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 300;
+      const newScrollLeft = scrollContainerRef.current.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
+      scrollContainerRef.current.scrollTo({
+        left: newScrollLeft,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   useEffect(() => {
     loadCoreTeamData().then(data => setCoreTeam(data));
+    loadFoundersData().then(data => setFounders(data));
   }, []);
 
   return (
@@ -46,8 +82,72 @@ export default function AboutUs() {
       </div>
 
       <div className="container mx-auto min-h-[calc(100vh-4rem)] flex flex-col justify-center">
-        <div className="bg-transparent py-16">
+        <div className="bg-transparent py-24">
           <div className="text-center mb-12">
+            <h4 className="text-2xl md:text-3xl font-bold text-gray-800">MESSAGE FROM OUR FOUNDERS</h4>
+            <p className="mt-2 text-gray-600 text-sm md:text-base">Meet the visionaries who laid our foundation</p>
+          </div>
+          
+          <div className="relative group">
+            <div
+              ref={scrollContainerRef}
+              className="flex overflow-x-auto gap-6 md:gap-8 px-4 pb-4 scroll-smooth scrollbar-hide"
+              style={{
+                msOverflowStyle: 'none',
+                scrollbarWidth: 'none',
+                WebkitOverflowScrolling: 'touch'
+              }}
+            >
+              {founders.map((founder, index) => (
+                <div
+                  key={index}
+                  className="flex-none w-[280px] bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden"
+                >
+                  <div className="aspect-square relative">
+                    <Image
+                      src={founder.image}
+                      alt={founder.name}
+                      fill
+                      className="object-cover"
+                      sizes="280px"
+                    />
+                  </div>
+                  <div className="p-6 text-center">
+                    <h5 className="font-semibold text-gray-900 mb-3 text-lg">{founder.name}</h5>
+                    <p className="text-gray-600 italic">{founder.quote}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            <button
+              onClick={() => scroll('left')}
+              className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white shadow-md rounded-r-lg p-2 cursor-pointer transition-opacity duration-300 opacity-0 group-hover:opacity-100 focus:outline-none disabled:opacity-0"
+              style={{ transform: 'translate(0, -50%)' }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-gray-600">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+            </button>
+            
+            <button
+              onClick={() => scroll('right')}
+              className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white shadow-md rounded-l-lg p-2 cursor-pointer transition-opacity duration-300 opacity-0 group-hover:opacity-100 focus:outline-none disabled:opacity-0"
+              style={{ transform: 'translate(0, -50%)' }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-gray-600">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </button>
+          </div>
+
+          <style jsx>{`
+            .scrollbar-hide::-webkit-scrollbar {
+              display: none;
+            }
+          `}</style>
+
+          <div className="text-center mb-12 mt-24">
             <h4 className="text-2xl md:text-3xl font-bold text-gray-800">OUR VERTICALS</h4>
             <p className="mt-2 text-gray-600 text-sm md:text-base">Our key focus areas for community development</p>
           </div>
@@ -110,7 +210,7 @@ export default function AboutUs() {
       </div>
 
       <div className="container mx-auto min-h-[calc(100vh-4rem)] flex flex-col justify-center">
-        <div className="bg-transparent py-16">
+        <div className="bg-transparent py-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-4 md:px-0">
             <div className="text-left">
               <h4 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">OUR PROJECTS</h4>
@@ -180,7 +280,7 @@ export default function AboutUs() {
       </div>
 
       <div className="container mx-auto min-h-[calc(100vh-4rem)] flex flex-col justify-center mb-16">
-        <div className="bg-transparent py-16">
+        <div className="bg-transparent py-24">
           <div className="text-center mb-12">
             <h4 className="text-2xl md:text-3xl font-bold text-gray-800">CORE TEAM</h4>
             <p className="mt-2 text-gray-600 text-sm md:text-base">Meet the dedicated individuals behind our mission</p>
