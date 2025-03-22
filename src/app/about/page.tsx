@@ -16,7 +16,7 @@ type Founder = {
 const loadFoundersData = async (): Promise<Founder[]> => {
   const response = await fetch('/data/founders.csv');
   const csvText = await response.text();
-  const [header, ...rows] = csvText.split('\n').filter(Boolean);
+  const rows = csvText.split('\n').filter(Boolean);
   return rows.map(row => {
     const matches = row.match(/(?:^|,)("[^"]*"|[^,]*)/g);
     if (!matches) return { image: '', name: '', quote: '' };
