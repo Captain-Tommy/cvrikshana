@@ -337,7 +337,7 @@ export default function Home() {
               title: 'Partner With Us',
               text: 'Collaborate with us to amplify our impact. Together, we can create sustainable solutions for community development.',
               button: 'Email us',
-              link: 'mailto:ikshanaclub@gmail.com?subject=Partnering%20Request'
+              link: 'mailto:cvrikshana@gmail.com?subject=Partnering%20Request'
             }].map((card, index) => (
               <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="p-8 flex flex-col items-center">
