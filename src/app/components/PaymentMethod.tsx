@@ -58,8 +58,8 @@ export default function PaymentMethod({ onClose, amount }: PaymentMethodProps) {
   };
 
   return (
-    <div className="fixed inset-0 backdrop-blur-xl bg-black/30 flex items-center justify-center z-[100] p-4 animate-fadeIn overflow-y-auto">
-      <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-10 max-w-4xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 relative animate-slideUp my-4 border border-white/20">
+    <div className="fixed inset-0 backdrop-blur-xl bg-black/30 flex items-center justify-center z-[100] p-4 animate-fadeIn overflow-y-auto min-h-screen py-8">
+      <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-10 max-w-4xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 relative animate-slideUp my-8 border border-white/20">
         <div className="flex flex-col justify-center items-center md:border-r border-gray-200/50 md:pr-8 space-y-6">
           <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent mb-2 sm:mb-4">Payment Summary</h2>
           <div className="text-center w-full p-8 bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-2xl shadow-inner relative overflow-hidden group hover:shadow-lg transition-all duration-300">
@@ -142,8 +142,8 @@ export default function PaymentMethod({ onClose, amount }: PaymentMethodProps) {
           )}
 
           {paymentMethod === 'upi' && (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="text-center">
+            <form onSubmit={handleSubmit} className="space-y-6 max-h-[60vh] overflow-y-auto pr-4 -mr-4">
+              <div className="text-center bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-inner">
                 <Image
                   src="/images/upi-qr.webp"
                   alt="UPI QR Code"
@@ -224,14 +224,15 @@ export default function PaymentMethod({ onClose, amount }: PaymentMethodProps) {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 font-semibold relative"
+                  className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-3 rounded-full hover:from-blue-700 hover:to-blue-800 font-semibold transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center gap-2"
                 >
                   {isLoading ? (
                     <>
-                      <span className="opacity-0">Verify Payment</span>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></div>
-                      </div>
+                      <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Processing...
                     </>
                   ) : (
                     'Verify Payment'
@@ -242,13 +243,15 @@ export default function PaymentMethod({ onClose, amount }: PaymentMethodProps) {
           )}
 
           {paymentMethod === 'bank' && (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="bg-gray-50 p-4 rounded-lg space-y-2">
-                <p className="font-semibold text-gray-900">Bank Account Details:</p>
-                <p className="text-gray-800">Account Name: CVR IKSHANA</p>
-                <p className="text-gray-800">Account Number: XXXXXXXX1234</p>
-                <p className="text-gray-800">IFSC Code: XXXX0001234</p>
-                <p className="text-gray-800">Bank Name: Example Bank</p>
+            <form onSubmit={handleSubmit} className="space-y-6 max-h-[60vh] overflow-y-auto pr-4 -mr-4">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-inner space-y-4 mb-6">
+                <h3 className="text-lg font-semibold text-gray-900">Bank Account Details</h3>
+                <div className="space-y-2">
+                  <p className="text-gray-800"><span className="font-medium">Account Name:</span> CVR Ikshana Foundation</p>
+                  <p className="text-gray-800"><span className="font-medium">Account Number:</span> 1234567890</p>
+                  <p className="text-gray-800"><span className="font-medium">IFSC Code:</span> SBIN0123456</p>
+                  <p className="text-gray-800"><span className="font-medium">Bank:</span> State Bank of India</p>
+                </div>
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-800 mb-2">
@@ -298,6 +301,18 @@ export default function PaymentMethod({ onClose, amount }: PaymentMethodProps) {
                   required
                 />
               </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-800 mb-2">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full border-2 border-gray-200 rounded-2xl p-4 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-gray-900 hover:border-blue-300 bg-white/50 backdrop-blur-sm"
+                  required
+                />
+              </div>
               <div className="flex justify-between items-center pt-4">
                 <button
                   type="button"
@@ -308,7 +323,7 @@ export default function PaymentMethod({ onClose, amount }: PaymentMethodProps) {
                 </button>
                 <button
                   type="submit"
-                  className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 font-semibold"
+                  className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 font-semibold relative"
                 >
                   Verify Payment
                 </button>

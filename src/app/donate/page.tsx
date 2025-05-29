@@ -46,10 +46,10 @@ export default function DonatePage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white pb-40">
       <Header />
       
-      <div className="pt-32 sm:pt-36 md:pt-40 lg:pt-44 px-3 sm:px-6 lg:px-8 animate-fadeIn">
+      <div className="pt-32 sm:pt-36 md:pt-40 lg:pt-44 px-3 sm:px-6 lg:px-8 animate-fadeIn mb-32">
         <div className="max-w-7xl mx-auto space-y-12 sm:space-y-16 md:space-y-20">
           {/* Impact Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
