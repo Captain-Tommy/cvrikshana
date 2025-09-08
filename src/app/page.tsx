@@ -186,14 +186,14 @@ export default function Home() {
                 <div className="flex items-start gap-2">
                   <Image src="/icons/fee.gif" alt="Registration Fee" width={24} height={24} className="w-5 h-5 sm:w-6 sm:h-6" />
                   <div>
-                    <p className="font-semibold">Registration Fee:</p>
+                    <p className="font-semibold">Minimum Donation:</p>
                     <p className="text-sm">{cta.registration_fee}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
                   <Image src="/icons/deadline.gif" alt="Registration Deadline" width={24} height={24} className="w-5 h-5 sm:w-6 sm:h-6" />
                   <div>
-                    <p className="font-semibold">Registration Deadline:</p>
+                    <p className="font-semibold">Donation Deadline:</p>
                     <p className="text-sm">{cta.registration_deadline}</p>
                   </div>
                 </div>
