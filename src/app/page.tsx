@@ -156,7 +156,7 @@ export default function Home() {
         <div key={index} className="relative w-full overflow-hidden rounded-lg mt-4">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between bg-white rounded-lg shadow-sm p-4 sm:p-6 md:p-8">
             <div className="w-full lg:w-1/2 lg:pr-8 mb-6 lg:mb-0">
-              <div className="inline-block bg-green-100 text-green-800 px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">Registrations Open</div>
+              <div className="inline-block bg-green-100 text-green-800 px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">Donations Open</div>
               <div className="block lg:hidden w-full h-[300px] relative mb-4">
                 <Image
                   src={cta.imagepath}
