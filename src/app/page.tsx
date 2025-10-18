@@ -330,7 +330,7 @@ export default function Home() {
               title: 'Make a Donation',
               text: 'Support our initiatives with a donation. Every contribution, big or small, helps us create positive change in our community.',
               button: 'Donate Now',
-              link: '/donate'
+              link: 'mailto:cvrikshana@gmail.com?subject=DonationIntrest'
             },
             {
               icon: '/icons/collab.gif',
